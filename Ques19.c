@@ -57,9 +57,9 @@ bool isSafe(int processes[], int avail[], int maxm[][b],int allot[][b])
 int main() 
 { 
     int processes[] = {0, 1, 2, 3, 4}; 
-    int avail[] = {5, 3, 2}; // Available instances of resources 
-    int maxm[][b] = {{7, 8, 4},{3, 2, 2},{9, 0, 6},{2, 8, 2},{4, 5, 3}}; // Maximum R that can be allocated to processes
-    int allot[][b] = {{0, 6, 0}, {2, 6, 0}, {3, 7, 2},{2, 6, 1}, {1, 6, 2}}; // Resources allocated to processes 
+    int avail[] = {3, 3, 2}; // Available instances of resources 
+    int maxm[][b] = {{7, 5, 3},{3, 2, 2},{9, 0, 2},{2, 2, 2},{4, 3, 3}}; // Maximum R that can be allocated to processes
+    int allot[][b] = {{0, 1, 0}, {2, 0, 0}, {3, 0, 2},{2, 1, 1}, {0, 0, 2}}; // Resources allocated to processes 
     isSafe(processes, avail, maxm, allot); // Check system is in safe state or not
     return 0; 
 } 
