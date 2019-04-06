@@ -1,7 +1,7 @@
 #include<stdio.h> 
 using namespace std; 
- int a = 5; // Number of processes 
-int b= 3; // Number of resources 
+const int a = 5; // Number of processes 
+const int b= 3; // Number of resources 
 void calneed(int need[a][b], int maxm[a][b], int allot[a][b]) // Function to find the need of each process 
 { 
     for (int i = 0 ; i < a ; i++) 
@@ -12,7 +12,7 @@ bool isSafe(int processes[], int avail[], int maxm[][b],int allot[][b])
 { 
     int need[a][b]; 
     calneed(need, maxm, allot); // Function to calculate need matrix 
-     finish[a] = {0};  // Mark all processes as infinish 
+    bool finish[a] = {0};  // Mark all processes as infinish 
     int safeSeq[a]; // To store safe sequence 
     int work[b]; 
     for (int i = 0; i < b ; i++) //duplicacy in work resource
@@ -23,6 +23,7 @@ bool isSafe(int processes[], int avail[], int maxm[][b],int allot[][b])
     int count = 0; 
     while (count < a) //find a process which is not finished
     {  
+     bool found=false;
         for (int c = 0; c < a; c++) 
         {  
             if (finish[c] == 0) //checking process is finished or not
