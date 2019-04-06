@@ -52,7 +52,7 @@ bool isSafe(int processes[], int avail[], int maxm[][b],int allot[][b])
     printf( "System is in safe state.\nSafe sequence is: "); 
     for (int i = 0; i < a ; i++) 
         printf("%d ",safeSeq[i]); 
-    return true; 
+    return true;  
 } 
 int main() 
 { 
