@@ -2,12 +2,11 @@
 int main() 
 { 
       int i, limit, total = 0, x, counter = 0, time_quantum,j; 
-	  int wait_time = 0, turnaround_time = 0,pos,z,p[10],prio[10], a_time[10], b_time[10], temp[10],b; 
-	  float average_wait_time, average_turnaround_time;
-	  printf("\nEnter Total Number of Processes:"); 
-	  scanf("%d", &limit); //limit stores total no of processes
-      
-	  x = limit; 
+      int wait_time = 0, turnaround_time = 0,pos,z,p[10],prio[10], a_time[10], b_time[10], temp[10],b; 
+      float average_wait_time, average_turnaround_time;
+      printf("\nEnter Total Number of Processes:"); 
+      scanf("%d", &limit); //limit stores total no of processes
+      x = limit; 
       for(i = 0; i < limit; i++) //total details for all processes
       {
 	    p[i]=i+1;
@@ -34,13 +33,13 @@ int main()
 			    if(prio[j]<prio[pos])
 				pos=j;
 			}
-		temp1=prio[z];
+	temp1=prio[z];
 		prio[z]=prio[pos];
 		prio[pos]=temp1;
-		temp1=b_time[z];
+	temp1=b_time[z];
 		b_time[z]=b_time[pos];
 		b_time[pos]=temp1;
-		temp1=a_time[z];
+	temp1=a_time[z];
 		a_time[z]=a_time[pos];
 		a_time[pos]=temp1;
         temp1=p[z];
@@ -50,9 +49,7 @@ int main()
 		temp[z]=temp[pos];
 		temp[pos]=temp1;
 		    }
-		{
-		}
-			if(temp[i] <= time_quantum && temp[i] > 0) 
+	if(temp[i] <= time_quantum && temp[i] > 0) 
             { 
                   total = total + temp[i]; 
                   temp[i] = 0; 
@@ -64,33 +61,33 @@ int main()
                   total = total + time_quantum; 
             } 
 	for(b=0;b<limit;b++)//rate of priorities
-		{
+            {
 			if(b==i)
 			prio[b]+=1;//process starts execution
 			else
 			prio[b]+=2;//process waiting for cpu
-		}
+	    }
 
             if(temp[i] == 0 && counter == 1) 
             { 
                   x--; 
                   printf("\nProcess[%d]\t\t%d\t\t %d\t\t %d\t\t%d", p[i], b_time[i], total - a_time[i], total - a_time[i] - b_time[i],prio[i]);
-                  wait_time = wait_time + total - a_time[i] - b_time[i]; 
-                  turnaround_time = turnaround_time + total - a_time[i]; 
+                  wait_time = wait_time + total - a_time[i] - b_time[i]; //calculating wait time
+                  turnaround_time = turnaround_time + total - a_time[i]; //calculating turnaround time
                   counter = 0; 
             } 
             if(i == limit - 1) 
             {
                   i = 0; 
-			}
+             }
             else if(a_time[i + 1] <= total) 
             {
                   i++;
-			}
+	    }
             else 
             {
                   i = 0;
-			}		
+	    }		
       } 
       return 0; 
 }
