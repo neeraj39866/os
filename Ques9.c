@@ -1,8 +1,8 @@
 #include<stdio.h> 
 int main() 
 { 
-      int i, limit, total = 0, x, counter = 0, time_quantum,j; 
-      int wait_time = 0, turnaround_time = 0,pos,z,p[10],prio[10], a_time[10], b_time[10], temp[10],b; 
+      int i, limit, total = 0, x, counter = 0, time_quantum,j; //intializing counter and total by zero
+      int wait_time = 0, turnaround_time = 0,pos,z,p[10],prio[10], a_time[10], b_time[10], temp[10],b; //intiallizing waiting and turnaround time by zero
       float average_wait_time, average_turnaround_time;
       printf("\nEnter Total Number of Processes:"); 
       scanf("%d", &limit); //limit stores total no of processes
@@ -33,19 +33,19 @@ int main()
 			    if(prio[j]<prio[pos])
 				pos=j;
 			}
-	temp1=prio[z];
+	temp1=prio[z];//swapping the values to pos
 		prio[z]=prio[pos];
 		prio[pos]=temp1;
-	temp1=b_time[z];
+	temp1=b_time[z];//swapping the values to pos
 		b_time[z]=b_time[pos];
 		b_time[pos]=temp1;
-	temp1=a_time[z];
+	temp1=a_time[z];//swapping the values to pos
 		a_time[z]=a_time[pos];
 		a_time[pos]=temp1;
-        temp1=p[z];
+        temp1=p[z];//swapping the values to pos
 		p[z]=p[pos];
 		p[pos]=temp1;
-        temp1=temp[z];
+        temp1=temp[z];//swapping the values to pos
 		temp[z]=temp[pos];
 		temp[pos]=temp1;
 		    }
@@ -53,7 +53,7 @@ int main()
             { 
                   total = total + temp[i]; 
                   temp[i] = 0; 
-                  counter = 1; 
+                  counter = 1; //incrementing the counter
             } 
             else if(temp[i] > 0) 
             { 
@@ -72,8 +72,10 @@ int main()
             { 
                   x--; 
                   printf("\nProcess[%d]\t\t%d\t\t %d\t\t %d\t\t%d", p[i], b_time[i], total - a_time[i], total - a_time[i] - b_time[i],prio[i]);
-                  wait_time = wait_time + total - a_time[i] - b_time[i]; //calculating wait time
-                  turnaround_time = turnaround_time + total - a_time[i]; //calculating turnaround time
+                  int t = wait_time + total - a_time[i] - b_time[i]; //calculating wait time
+                  int t2 = turnaround_time + total - a_time[i]; //calculating turnaround time
+		  average_wait_time+=t;
+		  average_turnaround_time+=t2;
                   counter = 0; 
             } 
             if(i == limit - 1) 
@@ -89,5 +91,8 @@ int main()
                   i = 0;
 	    }		
       } 
+      printf("Average waiting time is \n%f",average_wait_time); 
+	  printf("Avaerage turn around time is \n%f",average_turnaround_time);
+	
       return 0; 
 }
